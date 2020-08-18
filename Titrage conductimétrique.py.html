@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# #Définir le système 
+
+# In[ ]:
+
+
+import matplotlib .pyplot as plt
+import numpy as np
+
+
+# ##Saisie du volume équivalent en mL
+
+# In[ ]:
+
+
+VE = 
+
+
+# ##Saisie du volume d'eau ajouté en mL
+
+# In[ ]:
+
+
+Veau = 
+
+
+# ##Initialisation de 5 listes
+
+# In[ ]:
+
+
+nAH, nHO, nNa, nA, V = [],[],[],[],[]
+
+
+# ##Fonction auxiliaire appelée dans le programme afin de déterminer l'évolution des quantités de matière avant et à l'équivalence
+
+# In[ ]:
+
+
+def calcul_quantites_avant_et_a_equivalence(i):
+    V.append(i)
+    #append ajoute une valeur à la fin d'une liste
+    nAH.append((0.145*10-0.10*i)*0.001)
+    nHO.append(0)
+    nNa.append(0.10*i*0.001)
+    nA.append(0.10*i*0.001)
+
+
+# ##Fonction auxiliaire appelée dans le programme afin de déterminer l'évolution des quantités de matière après l'équivalence à compléter
+
+# In[ ]:
+
+
+def calcul_quantites_après_equivalence(i):
+    
+
+
+# ##Déterminer l'évolution des quantités de matière des espèces présentes dans le bécher
+
+# In[ ]:
+
+
+for i in range (0,26,1):
+    if i <= VE : 
+        #appelle une fonction qui calcule les quantités avant et à l'équivalence
+        calcul_quantites_avant_et_a_equivalence (i)
+        else
+        #appelle une fonction qui calcule les quantités après l'équivalence
+        calcul_quantites_après_equivalence(i)
+
+
+# #Calcul de la conductivité pour tout volume V versé
+
+# ##Expression de la conductivité
+
+# In[ ]:
+
+
+Conduct= (20*np.array(nHO))+ 5.0*np.array(nNa)+4.1*np.array(nA))/(Veau*1E-3+1E-3*np.array(V))
+
+
+# #Afficher l'évolution des quantités de matière et de la conductivité
+
+# In[ ]:
+
+
+plt.supplot(121) #suuplot permet d'afficher deux graphes
+
+
+plt.legend()
+plt.supplot(122)
+plt.scatter(V,Conduct, label="Conductivité en $/mathrm{mS/cdot m^{-1}}$")
+plt.legend()
+plt.show()
+
